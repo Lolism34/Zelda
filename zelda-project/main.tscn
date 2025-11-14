@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbcdhf03131cf"]
+
+[ext_resource type="Script" uid="uid://bae8xb167miau" path="res://GameManager.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://bssah86afls0j" path="res://player.tscn" id="2_h2yge"]
+
+[node name="Main" type="Node2D"]
+
+[node name="GameManager" type="Node2D" parent="." groups=["game_manager"]]
+script = ExtResource("1_0xm2m")
+
+[node name="RoomRoot" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("2_h2yge")]
+position = Vector2(-11, -3)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1, 4)
+anchor_mode = 0
+ignore_rotation = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="FadeRect" type="ColorRect" parent="."]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 73.0
+offset_bottom = 66.0
+color = Color(0, 0, 0, 0)
