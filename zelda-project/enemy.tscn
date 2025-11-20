@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dd4lb0xy06die"]
+[gd_scene load_steps=7 format=3 uid="uid://dd4lb0xy06die"]
 
 [ext_resource type="Script" uid="uid://dmbeg2wv148e3" path="res://enemy.gd" id="1_7k104"]
 [ext_resource type="Texture2D" uid="uid://dkrslf4fly8fq" path="res://Player Sprite.png" id="2_4gyqm"]
+[ext_resource type="Texture2D" uid="uid://dqljko5nc6meu" path="res://Slim_Enemy.png" id="3_qi2p4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qi2p4"]
 animations = [{
@@ -15,7 +16,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_4gyqm")
+"texture": ExtResource("3_qi2p4")
 }],
 "loop": true,
 "name": &"idle_down",
@@ -23,8 +24,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
+size = Vector2(31.5, 31.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qi2p4"]
+size = Vector2(36, 30)
 
 [node name="Enemy" type="Node2D"]
 
@@ -32,16 +35,17 @@ animations = [{
 script = ExtResource("1_7k104")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-position = Vector2(466.5, 478)
-scale = Vector2(0.08886719, 0.06640625)
+position = Vector2(4.999999, 2)
+scale = Vector2(0.59643555, 0.64941365)
 sprite_frames = SubResource("SpriteFrames_qi2p4")
 animation = &"idle_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(7, 4)
 shape = SubResource("RectangleShape2D_4gyqm")
 
 [node name="HurtArea" type="Area2D" parent="CharacterBody2D"]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D/HurtArea"]
-position = Vector2(43, 50)
+position = Vector2(8, 5)
 shape = SubResource("RectangleShape2D_qi2p4")

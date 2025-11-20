@@ -1,17 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbcdhf03131cf"]
+[gd_scene load_steps=7 format=3 uid="uid://dbcdhf03131cf"]
 
 [ext_resource type="Script" uid="uid://bae8xb167miau" path="res://GameManager.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bssah86afls0j" path="res://player.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://ck8f35y5jvngr" path="res://room_01.tscn" id="2_lquwl"]
+[ext_resource type="PackedScene" uid="uid://d21f027hy4d2k" path="res://room_02.tscn" id="3_7mycd"]
+[ext_resource type="PackedScene" uid="uid://cerr7skm8sowd" path="res://room_03.tscn" id="4_272bh"]
+[ext_resource type="PackedScene" uid="uid://cqu01rtl4hyv7" path="res://hud.tscn" id="6_7mycd"]
 
 [node name="Main" type="Node2D"]
 
 [node name="GameManager" type="Node2D" parent="." groups=["game_manager"]]
 script = ExtResource("1_0xm2m")
+room_scenes = Array[PackedScene]([ExtResource("2_lquwl"), ExtResource("3_7mycd"), ExtResource("4_272bh")])
 
 [node name="RoomRoot" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("2_h2yge")]
-position = Vector2(-11, -3)
+position = Vector2(-370, -319)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1, 4)
@@ -26,3 +31,38 @@ offset_top = 1.0
 offset_right = 73.0
 offset_bottom = 66.0
 color = Color(0, 0, 0, 0)
+
+[node name="HUD" parent="." instance=ExtResource("6_7mycd")]
+
+[node name="DialogLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogPanel" type="Panel" parent="DialogLayer"]
+offset_left = 345.0
+offset_top = 262.0
+offset_right = 741.0
+offset_bottom = 412.0
+
+[node name="TextLabel" type="Label" parent="DialogLayer/DialogPanel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 42.0
+offset_right = 387.0
+offset_bottom = 117.0
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="NameLabel" type="Label" parent="DialogLayer/DialogPanel"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 7.0
+offset_right = 70.0
+offset_bottom = 42.0
+
+[node name="PressLabel" type="Label" parent="DialogLayer/DialogPanel"]
+layout_mode = 0
+offset_left = 121.0
+offset_top = 118.0
+offset_right = 271.0
+offset_bottom = 167.0
+text = "Press E to Continue
+"

@@ -6,6 +6,9 @@ extends CharacterBody2D
 var current_health: int
 var move_dir: Vector2 = Vector2.DOWN
 var is_attacking: bool = false
+var rupees: int = 0
+var keys: int = 0
+var hud
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var sword_hitbox: Area2D = $SwordHitbox
@@ -17,6 +20,7 @@ func _ready() -> void:
 	sword_hitbox.monitorable = false
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
 	sword_hitbox.body_entered.connect(_on_sword_body_entered)
+	
 
 func _physics_process(delta: float) -> void:
 	if is_attacking:
@@ -115,8 +119,28 @@ func _on_attack_timer_timeout() -> void:
 func _on_sword_body_entered(body: Node) -> void:
 	if body is Enemy:
 		body.take_damage(1)
-
+		
 func take_damage(amount: int) -> void:
 	current_health -= amount
-	if current_health <= 0:
-		queue_free()
+	if hud != null:
+		hud.set_hearts(current_health, max_health)
+		if current_health <= 0:
+			queue_free()
+
+#Update when you pick up rupees or keys:
+
+func add_rupees(amount: int) -> void:
+	rupees += amount
+	if hud != null:
+		hud.set_rupees(rupees)
+
+func add_key() -> void:
+	keys += 1
+	if hud != null:
+		hud.set_keys(keys)
+		
+		hud = get_tree().get_root().find_child("HUD", true, false)
+	if hud != null:
+		hud.set_hearts(current_health, max_health)
+		hud.set_rupees(rupees)
+		hud.set_keys(keys)

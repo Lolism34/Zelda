@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bt12dcjaonvvi"]
+
+[ext_resource type="Texture2D" uid="uid://d1gga7nop4nat" path="res://up.tres" id="1_nswxe"]
+[ext_resource type="Script" uid="uid://xwy573ta1oj5" path="res://npc_gramps.gd" id="1_okbgq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_okbgq"]
+size = Vector2(245.183, 300)
+
+[node name="NPC" type="Area2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_okbgq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3.8146973e-06, 1.9999962)
+scale = Vector2(0.13867189, 0.14666668)
+texture = ExtResource("1_nswxe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4.172325e-07, 2.0000005)
+scale = Vector2(0.13867193, 0.14666669)
+shape = SubResource("RectangleShape2D_okbgq")
+one_way_collision = true
