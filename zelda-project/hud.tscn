@@ -1,44 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqu01rtl4hyv7"]
+[gd_scene load_steps=2 format=3 uid="uid://cqu01rtl4hyv7"]
 
-[ext_resource type="Texture2D" uid="uid://6qhcg40siplk" path="res://Heart.png" id="1_37p78"]
 [ext_resource type="Script" uid="uid://dgymrp583pqg" path="res://hud.gd" id="1_64ctp"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_64ctp")
 
-[node name="Root" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="HeartLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "aweawd
+"
 
-[node name="TopBar" type="HBoxContainer" parent="Root"]
-layout_mode = 0
-offset_right = 137.0
-offset_bottom = 40.0
-size_flags_horizontal = 3
+[node name="RupeeLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
 
-[node name="HeartContainer" type="TextureRect" parent="Root/TopBar"]
-layout_mode = 2
-
-[node name="Heart1" type="TextureRect" parent="Root/TopBar"]
-layout_mode = 2
-texture = ExtResource("1_37p78")
-
-[node name="Heart2" type="TextureRect" parent="Root/TopBar"]
-layout_mode = 2
-texture = ExtResource("1_37p78")
-
-[node name="Heart3" type="TextureRect" parent="Root/TopBar"]
-layout_mode = 2
-texture = ExtResource("1_37p78")
-
-[node name="KeyLabel" type="Label" parent="Root/TopBar"]
-layout_mode = 2
-text = "Keys: 0"
-
-[node name="RupeeLabel" type="Label" parent="Root/TopBar"]
-layout_mode = 2
-text = "Rupees: 0"
+[node name="KeyLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0

@@ -20,9 +20,20 @@ func _ready() -> void:
 	sword_hitbox.monitorable = false
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
 	sword_hitbox.body_entered.connect(_on_sword_body_entered)
+	add_to_group("player")
 	
+	hud = get_tree().get_root().find_child("HUD", true, false)
+	print("Player _ready. HUD ref:", hud)
+	if hud != null:
+		hud.set_hearts(current_health, max_health)
+		hud.set_rupees(rupees)
+		hud.set_keys(keys)
+		
+		
 
-func _physics_process(delta: float) -> void:
+
+
+func _physics_process(_delta: float) -> void:
 	if is_attacking:
 		velocity = Vector2.ZERO
 		move_and_slide()
@@ -45,7 +56,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("attack"):
 		_start_attack()
 
-func _update_animation(input_vec: Vector2) -> void:
+func _update_animation(_input_vec: Vector2) -> void:
 	var state := ""
 	if velocity.length() == 0.0:
 		state = "idle_"
@@ -122,10 +133,31 @@ func _on_sword_body_entered(body: Node) -> void:
 		
 func take_damage(amount: int) -> void:
 	current_health -= amount
+	if current_health < 0:
+		current_health = 0
+	print("Player took damage:", amount, " current_health:", current_health)
+
 	if hud != null:
 		hud.set_hearts(current_health, max_health)
-		if current_health <= 0:
-			queue_free()
+
+	if current_health <= 0:
+		_die_to_failure()
+
+func _die_to_failure() -> void:
+	velocity = Vector2.ZERO
+	is_attacking = false
+	print("Player died. Going to failure cutscene")
+	get_tree().change_scene_to_file("res://failure_cutscene.tscn")
+
+func _die_and_restart() -> void:
+# optional: stop movement and attacks
+	velocity = Vector2.ZERO
+	is_attacking = false
+	var fader = get_tree().get_root().find_child("FadeLayer", true, false)
+	if fader != null and fader.has_method("fade_and_restart"):
+		fader.fade_and_restart()
+	else:
+		get_tree().reload_current_scene()
 
 #Update when you pick up rupees or keys:
 

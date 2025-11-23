@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxs58cl32xfga"]
+
+[ext_resource type="Script" uid="uid://ciykdrmxts6be" path="res://failure_cutscene.gd" id="1_58m8t"]
+[ext_resource type="Texture2D" uid="uid://fqdwg0gp4ybn" path="res://down.tres" id="2_o8ga0"]
+[ext_resource type="Texture2D" uid="uid://kdusdr53s16c" path="res://forest burn.png" id="3_58m8t"]
+
+[node name="FailureCutscene" type="Node2D"]
+script = ExtResource("1_58m8t")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="HUDLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="DialogPanel" type="Panel" parent="HUDLayer"]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 2.0
+offset_bottom = 2.0
+
+[node name="TextLabel" type="Label" parent="HUDLayer/DialogPanel"]
+layout_mode = 0
+offset_left = 365.0
+offset_top = 73.0
+offset_right = 967.0
+offset_bottom = 260.0
+autowrap_mode = 2
+
+[node name="NameLabel" type="Label" parent="HUDLayer/DialogPanel"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 79.0
+offset_right = 144.0
+offset_bottom = 102.0
+
+[node name="PressLabel" type="Label" parent="HUDLayer/DialogPanel"]
+layout_mode = 0
+offset_left = 491.0
+offset_top = 596.0
+offset_right = 680.0
+offset_bottom = 619.0
+text = "Press Space To Continue"
+
+[node name="Hero" type="Sprite2D" parent="."]
+position = Vector2(368, 470)
+scale = Vector2(0.66796875, 0.66333336)
+texture = ExtResource("2_o8ga0")
+
+[node name="Wizard" type="Sprite2D" parent="."]
+position = Vector2(578.49994, 323.89655)
+scale = Vector2(6.9393935, 3.0470824)
+texture = ExtResource("3_58m8t")
+
+[node name="LineTimer" type="Timer" parent="."]
+wait_time = 2.3649999999999998
+autostart = true

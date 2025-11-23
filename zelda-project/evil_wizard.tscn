@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dd4lb0xy06die"]
+[gd_scene load_steps=6 format=3 uid="uid://d3doq65es6faf"]
 
-[ext_resource type="Script" uid="uid://dmbeg2wv148e3" path="res://enemy.gd" id="1_7k104"]
-[ext_resource type="Texture2D" uid="uid://dqljko5nc6meu" path="res://Slim_Enemy.png" id="3_qi2p4"]
+[ext_resource type="Script" uid="uid://d1hhbda7prd1y" path="res://Evil_wizard.gd" id="1_1pkua"]
+[ext_resource type="Texture2D" uid="uid://crxhciq4imqlu" path="res://evilwizard2.png" id="2_1pkua"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qi2p4"]
 animations = [{
@@ -12,7 +12,15 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_qi2p4")
+"texture": ExtResource("2_1pkua")
+}],
+"loop": true,
+"name": &"idle_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1pkua")
 }],
 "loop": true,
 "name": &"idle_down",
@@ -20,7 +28,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_qi2p4")
+"texture": ExtResource("2_1pkua")
 }],
 "loop": true,
 "name": &"idle_left",
@@ -28,15 +36,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_qi2p4")
-}],
-"loop": true,
-"name": &"idle_right",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_qi2p4")
+"texture": ExtResource("2_1pkua")
 }],
 "loop": true,
 "name": &"idle_up",
@@ -44,7 +44,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_qi2p4")
+"texture": ExtResource("2_1pkua")
 }],
 "loop": true,
 "name": &"walk_down",
@@ -52,7 +52,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_qi2p4")
+"texture": ExtResource("2_1pkua")
 }],
 "loop": true,
 "name": &"walk_left",
@@ -60,7 +60,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_qi2p4")
+"texture": ExtResource("2_1pkua")
 }],
 "loop": true,
 "name": &"walk_right",
@@ -68,7 +68,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_qi2p4")
+"texture": ExtResource("2_1pkua")
 }],
 "loop": true,
 "name": &"walk_up",
@@ -76,30 +76,29 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
-size = Vector2(24, 21)
+size = Vector2(45, 49.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qi2p4"]
-size = Vector2(30, 27)
+size = Vector2(50, 57)
 
-[node name="Enemy" type="Node2D"]
+[node name="Evil Wizard" type="Node2D"]
 
 [node name="Enemy" type="CharacterBody2D" parent="."]
-script = ExtResource("1_7k104")
+script = ExtResource("1_1pkua")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy"]
-position = Vector2(2.45703, -1.3906188)
-scale = Vector2(0.5169678, 0.5434568)
+position = Vector2(1, 5)
+scale = Vector2(1.1419678, 1.1215818)
 sprite_frames = SubResource("SpriteFrames_qi2p4")
-animation = &"idle_right"
+animation = &"idle_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
-position = Vector2(2, 2)
+position = Vector2(-1.5, 2.25)
 shape = SubResource("RectangleShape2D_4gyqm")
 
 [node name="HurtArea" type="Area2D" parent="Enemy"]
-position = Vector2(1, 2)
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/HurtArea"]
-position = Vector2(1, 1)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Enemy/HurtArea"]
+position = Vector2(-2, 2.5)
 shape = SubResource("RectangleShape2D_qi2p4")

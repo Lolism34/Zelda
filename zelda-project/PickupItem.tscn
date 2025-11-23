@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dydbbs3tdwjnd"]
+
+[ext_resource type="Script" uid="uid://cjn75n7o4bk3a" path="res://pickup_item.gd" id="1_lrnnq"]
+[ext_resource type="Texture2D" uid="uid://niwkd42rsd3t" path="res://amulet.png" id="2_0hfng"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fonal"]
+radius = 16.0
+height = 34.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="PickupItem" type="Area2D" parent="."]
+collision_layer = 2
+script = ExtResource("1_lrnnq")
+
+[node name="Sprite2D" type="Sprite2D" parent="PickupItem"]
+position = Vector2(-1.0000019, -1.8750012)
+scale = Vector2(0.2651515, 0.2295673)
+texture = ExtResource("2_0hfng")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupItem"]
+shape = SubResource("CapsuleShape2D_fonal")

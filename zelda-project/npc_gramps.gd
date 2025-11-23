@@ -39,7 +39,7 @@ func _on_body_exited(body: Node) -> void:
 	if dialog_active:
 		_end_dialog()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if dialog_panel == null:
 		return
 	if player_in_range and not dialog_active:

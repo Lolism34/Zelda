@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dbcdhf03131cf"]
+[gd_scene load_steps=8 format=3 uid="uid://dbcdhf03131cf"]
 
 [ext_resource type="Script" uid="uid://bae8xb167miau" path="res://GameManager.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bssah86afls0j" path="res://player.tscn" id="2_h2yge"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d21f027hy4d2k" path="res://room_02.tscn" id="3_7mycd"]
 [ext_resource type="PackedScene" uid="uid://cerr7skm8sowd" path="res://room_03.tscn" id="4_272bh"]
 [ext_resource type="PackedScene" uid="uid://cqu01rtl4hyv7" path="res://hud.tscn" id="6_7mycd"]
+[ext_resource type="Script" uid="uid://c0dx055dyd8vt" path="res://fade_layer.gd" id="6_272bh"]
 
 [node name="Main" type="Node2D"]
 
@@ -23,16 +24,20 @@ position = Vector2(1, 4)
 anchor_mode = 0
 ignore_rotation = false
 
+[node name="FadeLayer" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("6_272bh")
+
+[node name="Fade" type="ColorRect" parent="FadeLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="FadeRect" type="ColorRect" parent="."]
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 73.0
-offset_bottom = 66.0
-color = Color(0, 0, 0, 0)
-
-[node name="HUD" parent="." instance=ExtResource("6_7mycd")]
 
 [node name="DialogLayer" type="CanvasLayer" parent="."]
 
@@ -66,3 +71,5 @@ offset_right = 271.0
 offset_bottom = 167.0
 text = "Press E to Continue
 "
+
+[node name="HUD" parent="." instance=ExtResource("6_7mycd")]

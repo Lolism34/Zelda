@@ -14,20 +14,11 @@ var waiting_for_input: bool = true
 func _ready() -> void:
 	press_label.visible = false
 	lines = [
-{"name": "Narrator", "text": "The hero has defeated the King Slime in the swamp."},
-{"name": "Narrator", "text": "He notices a strange wizard watching him."},
-{"name": "Hero", "text": "Hello, I haven't seen you before. Who are you?"},
-{"name": "Wizard", "text": "My name is none of your business."},
-{"name": "Hero", "text": "Weird name."},
-{"name": "Wizard", "text": "...Anyway... I see you've defeated that King Slime."},
-{"name": "Hero", "text": "Yep! It was easy!"},
-{"name": "Wizard", "text": "Of course it was. It was the weakest of my army."},
-{"name": "Hero", "text": "So it was from you?! You don't seem very slimy."},
-{"name": "Wizard", "text": "...Alright, I've had enough."},
-{"name": "Narrator", "text": "The wizard begins casting a curse."},
-{"name": "Wizard", "text": "In a week's time you will die! Hahahaha!"},
-{"name": "Narrator", "text": "The wizard vanishes."},
-{"name": "Hero", "text": "I've got to fix this fast!"}
+{"name": "Narrator", "text": "Our hero fails his quest and tries again and again with no success."},
+	{"name": "Narrator", "text": "The one week time limit runs out and the hero's body starts to decay until nothing is left."},
+	{"name": "Narrator", "text": "With no more hero, the evil wizard easily takes over the village."},
+	{"name": "Narrator", "text": "Soon, the wizard claims the world itself."},
+	{"name": "Narrator", "text": "GAME OVER. Press Space to restart."}
 ]
 	line_timer.timeout.connect(_on_line_timer_timeout)
 	_next_line()
